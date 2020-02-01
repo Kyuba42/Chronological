@@ -21,21 +21,23 @@ public class PickUp : MonoBehaviour
             if (pickedUpObject == null)
             {
                 RaycastHit rayHit;
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 100.0f))
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 6.0f))
                 {
                     Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * rayHit.distance, Color.yellow);
                     if (rayHit.collider.gameObject.tag == "PickUp")
                     {
                         pickedUpObject = rayHit.collider.gameObject;
                         rayHit.collider.gameObject.transform.parent = transform;
-                        pickedUpObject.GetComponent<Rigidbody>().isKinematic = true;
+                        pickedUpObject.GetComponent<Rigidbody>().useGravity = false;
+                        pickedUpObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
                     }
                 }
             }
             else
             {
                 pickedUpObject.transform.parent = null;
-                pickedUpObject.GetComponent<Rigidbody>().isKinematic = false;
+                pickedUpObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                pickedUpObject.GetComponent<Rigidbody>().useGravity = true;
                 pickedUpObject = null;
             }
         }
