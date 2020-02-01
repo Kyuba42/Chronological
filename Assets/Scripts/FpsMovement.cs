@@ -43,6 +43,9 @@ public class FpsMovement : MonoBehaviour
 
     //Jump verables
     private bool isGrounded = true;
+    private float maxJump;
+    private bool jumpMaxHit = false;
+    private bool canMove = true;
 
 
     //-------------End Of private Verables--------//
