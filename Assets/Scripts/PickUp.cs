@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    GameObject pickedUpObject;
+    public Material outlineMaterialRef;
+    private GameObject pickedUpObject;
+    private Material[] objectMaterials;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,7 @@ public class PickUp : MonoBehaviour
                     if (rayHit.collider.gameObject.tag == "PickUp")
                     {
                         pickedUpObject = rayHit.collider.gameObject;
+                        pickedUpObject.GetComponent<MeshRenderer>().material = outlineMaterialRef;
                         rayHit.collider.gameObject.transform.parent = transform;
                         pickedUpObject.GetComponent<Rigidbody>().useGravity = false;
                         pickedUpObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
@@ -36,6 +39,7 @@ public class PickUp : MonoBehaviour
             else
             {
                 pickedUpObject.transform.parent = null;
+                pickedUpObject.GetComponent<MeshRenderer>().material = pickedUpObject.GetComponent<MeshRenderer>().materials[1];
                 pickedUpObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 pickedUpObject.GetComponent<Rigidbody>().useGravity = true;
                 pickedUpObject = null;
