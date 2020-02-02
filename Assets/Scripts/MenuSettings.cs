@@ -7,7 +7,10 @@ using UnityEngine.UI;
 public class MenuSettings : MonoBehaviour
 {
 
-    public AudioMixer audioMixer;
+    public AudioMixer MainMixer;
+    public AudioMixer SFXMixer;
+    public AudioMixer MusicMixer;
+
     public Dropdown dropdownres;
     // Start is called before the first frame update
 
@@ -39,17 +42,20 @@ public class MenuSettings : MonoBehaviour
 
     public void SetMainVolume(float volume)
     {
-        audioMixer.SetFloat("MainVolume", volume);
-    }
-    public void SetMusicVolume(float volume)
-    {
-        audioMixer.SetFloat("MusicVolume", volume);
+        MainMixer.SetFloat("MainVolume", volume);
     }
 
     public void SetSFXVolume(float volume)
     {
-        audioMixer.SetFloat("SFXVolume", volume);
+        SFXMixer.SetFloat("SFXVolume", volume);
     }
+
+    public void SetMusicVolume(float volume)
+    {
+        MusicMixer.SetFloat("MusicVolume", volume);
+    }
+
+  
 
     public void SetResolution(int resolution)
     {
