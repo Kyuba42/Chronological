@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
+    [Header("Material")]
     public Material outlineMaterialRef;
+    [Header("Animations")]
+    public Animator playerAnimatior = null;
+
     private GameObject pickedUpObject;
     public GameObject AudioListener;
     private Material[] objectMaterials;
     private bool holdItem;
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +26,8 @@ public class PickUp : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
+
         RaycastHit rayHit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 10.0f))
         {
@@ -38,6 +46,7 @@ public class PickUp : MonoBehaviour
                 // Turn off outline if looking at another PickUp object
                 if (pickedUpObject != null && rayHit.collider.gameObject != pickedUpObject)
                 {
+                    playerAnimatior.SetBool("grabbing", false);
                     pickedUpObject.GetComponent<MeshRenderer>().material = pickedUpObject.GetComponent<MeshRenderer>().materials[1];
                 }
 
@@ -47,10 +56,10 @@ public class PickUp : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0))
                 {
+
                     if (!holdItem)
                     {
                         holdItem = true;
-
                         pickedUpObject.GetComponent<Rigidbody>().useGravity = false;
                         pickedUpObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                         rayHit.collider.gameObject.transform.parent = transform;
