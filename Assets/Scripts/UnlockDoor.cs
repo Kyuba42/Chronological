@@ -11,23 +11,26 @@ public class UnlockDoor : MonoBehaviour
     public Animator animator;
     public Collider doorCollider;
 
-    private Vector3 radius;
-    private bool inRadius;
+    public bool triggered;
+
+    //private Vector3 radius;
+    //private bool inRadius;
 
     void Start()
     {
-        radius = new Vector3(4.0f, 0.0f, 5.0f);
-        inRadius = false;
+        //radius = new Vector3(4.0f, 0.0f, 5.0f);
+        //inRadius = false;
+        triggered = false;
     }
     void Update()
     {
-        // If key is in radius on door.
-        if ((door.transform.position.z - radius.z < key.transform.position.z) && (key.transform.position.x < door.transform.position.x + radius.x) && (key.transform.position.x > door.transform.position.x - radius.x))
-        {
-            inRadius = true;
-        }
+        //// If key is in radius on door.
+        //if ((door.transform.position.z - radius.z < key.transform.position.z) && (key.transform.position.x < door.transform.position.x + radius.x) && (key.transform.position.x > door.transform.position.x - radius.x))
+        //{
+        //    inRadius = true;
+        //}
 
-        if(inRadius)
+        if(triggered)
         {
             animator.enabled = true;
             doorCollider.enabled = false;
@@ -35,8 +38,8 @@ public class UnlockDoor : MonoBehaviour
 
     }
 
-    public bool GetInRadius()
-    {
-        return inRadius;
-    }
+//    public bool GetInRadius()
+//    {
+//        return inRadius;
+//    }
 }

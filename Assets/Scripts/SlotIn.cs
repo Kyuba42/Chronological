@@ -6,6 +6,7 @@ using UnityEngine;
 public class SlotIn : MonoBehaviour
 {
     public GameObject objectReference;
+    public UnlockDoor animationScript;
 
 
     // Start is called before the first frame update
@@ -24,11 +25,21 @@ public class SlotIn : MonoBehaviour
         
         if (other.name == objectReference.name)
         {
-            other.transform.parent = null;
             other.transform.position = transform.position;
             other.transform.rotation = transform.rotation;
             GetComponent<MeshRenderer>().enabled = false;
             other.gameObject.tag = "Picked";
+
+            if (animationScript != null)
+            {
+                //other.transform.parent = animationScript.transform;
+                other.transform.parent = animationScript.transform.GetChild(1);
+                animationScript.triggered = true;
+            }
+            else
+            {
+                other.transform.parent = null;
+            }
         }
     }
 }
