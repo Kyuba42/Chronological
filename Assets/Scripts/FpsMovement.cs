@@ -40,6 +40,7 @@ public class FpsMovement : MonoBehaviour
 
     //look verables
     private Vector2 LookRotation = new Vector2(0, 0);
+    public bool isPaused = false;
 
     //-------------End Of private Verables--------//
 
@@ -73,16 +74,32 @@ public class FpsMovement : MonoBehaviour
             movementForce.y += jumpForceCurrent * Time.deltaTime;
         }
 
+
+
+
         //- mouseLook -//
-        LookRotation.y += Input.GetAxis("Mouse X") * lookSpeed;
-        LookRotation.x += -Input.GetAxis("Mouse Y") * lookSpeed;
+        if (!isPaused)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
 
-        LookRotation.x = Mathf.Clamp(LookRotation.x , MinHeadTurnX, MaxHeadTurnX);
+            LookRotation.y += Input.GetAxis("Mouse X") * lookSpeed;
+            LookRotation.x += -Input.GetAxis("Mouse Y") * lookSpeed;
 
-        CharacterModel.transform.eulerAngles = new Vector2(0, LookRotation.y);
-        CharacterModelCamera.transform.localEulerAngles = new Vector2(LookRotation.x, 0);
+            LookRotation.x = Mathf.Clamp(LookRotation.x, MinHeadTurnX, MaxHeadTurnX);
 
+            CharacterModel.transform.eulerAngles = new Vector2(0, LookRotation.y);
+            CharacterModelCamera.transform.localEulerAngles = new Vector2(LookRotation.x, 0);
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
         characterController.Move(movementForce * Time.deltaTime);
         
+    }
+
+    public void SetPausedState(bool pause)
+    {
+        isPaused = pause;
     }
 }
