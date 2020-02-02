@@ -52,7 +52,7 @@ public class PickUp : MonoBehaviour
                         holdItem = true;
 
                         pickedUpObject.GetComponent<Rigidbody>().useGravity = false;
-                        pickedUpObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+                        pickedUpObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                         rayHit.collider.gameObject.transform.parent = transform;
                     }
                     else
