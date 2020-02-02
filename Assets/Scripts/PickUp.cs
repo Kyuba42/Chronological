@@ -4,41 +4,71 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    GameObject pickedUpObject;
+    public Material outlineMaterialRef;
+    private GameObject pickedUpObject;
+    private Material[] objectMaterials;
+    private bool holdItem;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        holdItem = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Check if LBM pressed
-        if (Input.GetMouseButtonDown(0))
+        RaycastHit rayHit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 10.0f))
         {
-            if (pickedUpObject == null)
+            if (holdItem == false && pickedUpObject != null)
             {
-                RaycastHit rayHit;
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 100.0f))
+                pickedUpObject.transform.parent = null;
+                pickedUpObject.GetComponent<MeshRenderer>().material = pickedUpObject.GetComponent<MeshRenderer>().materials[1];
+                pickedUpObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                pickedUpObject.GetComponent<Rigidbody>().useGravity = true;
+                pickedUpObject = null;
+            }
+
+            // Object is a PickUp
+            if (rayHit.collider.gameObject.tag == "PickUp")
+            {
+                // Turn off outline if looking at another PickUp object
+                if (pickedUpObject != null && rayHit.collider.gameObject != pickedUpObject)
                 {
-                    Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * rayHit.distance, Color.yellow);
-                    if (rayHit.collider.gameObject.tag == "PickUp")
+                    pickedUpObject.GetComponent<MeshRenderer>().material = pickedUpObject.GetComponent<MeshRenderer>().materials[1];
+                }
+
+                // Grab Object that collided with the ray and apply outline
+                pickedUpObject = rayHit.collider.gameObject;
+                pickedUpObject.GetComponent<MeshRenderer>().material = outlineMaterialRef;
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (!holdItem)
                     {
-                        pickedUpObject = rayHit.collider.gameObject;
+                        holdItem = true;
+
+                        pickedUpObject.GetComponent<Rigidbody>().useGravity = false;
+                        pickedUpObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
                         rayHit.collider.gameObject.transform.parent = transform;
-                        pickedUpObject.GetComponent<Rigidbody>().isKinematic = true;
+                    }
+                    else
+                    {
+                        holdItem = false;
                     }
                 }
             }
             else
             {
-                pickedUpObject.transform.parent = null;
-                pickedUpObject.GetComponent<Rigidbody>().isKinematic = false;
-                pickedUpObject = null;
+                // Turn off outline if looking at other object than previous pickUp
+                if (pickedUpObject != null)
+                {
+                    pickedUpObject.GetComponent<MeshRenderer>().material = pickedUpObject.GetComponent<MeshRenderer>().materials[1];
+                }
             }
+
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.red);
         }
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.red);
     }
 }
