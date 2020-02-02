@@ -6,6 +6,7 @@ public class PickUp : MonoBehaviour
 {
     public Material outlineMaterialRef;
     private GameObject pickedUpObject;
+    public GameObject AudioListener;
     private Material[] objectMaterials;
     private bool holdItem;
 
@@ -13,6 +14,7 @@ public class PickUp : MonoBehaviour
     void Start()
     {
         holdItem = false;
+        AudioListener.SetActive(true);
     }
 
     // Update is called once per frame

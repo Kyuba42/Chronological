@@ -8,6 +8,7 @@ public class Teleport : MonoBehaviour
     public GameObject ghost1920;
     public GameObject player;
     private Transform playerTrans;
+    public AudioSource SFXSource;
 
     private bool isKeyDown = false;
     private bool isInPresent = true;
@@ -38,6 +39,7 @@ public class Teleport : MonoBehaviour
                 isInPresent = true;
             }
             player.GetComponent<CharacterController>().enabled = true;
+            SFXSource.Play();
         }
     }
 }
