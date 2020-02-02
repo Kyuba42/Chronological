@@ -31,6 +31,8 @@ public class SlotIn : MonoBehaviour
             GetComponent<MeshRenderer>().enabled = false;
             other.gameObject.tag = "Picked";
 
+            other.enabled = false;
+
             if (animationScript != null)
             {
                 animationScript.triggered = true;
