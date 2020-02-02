@@ -26,7 +26,8 @@ public class PlayExitButton : MonoBehaviour
                 PlayGame();
             }
         }
-
+       // Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
     }
 
     void PlayGame()
