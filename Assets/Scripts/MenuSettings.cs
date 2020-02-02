@@ -8,6 +8,7 @@ public class MenuSettings : MonoBehaviour
 {
 
     public AudioMixer MainMixer;
+
     public AudioMixer SFXMixer;
     public AudioMixer MusicMixer;
 

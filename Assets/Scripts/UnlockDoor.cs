@@ -8,6 +8,9 @@ public class UnlockDoor : MonoBehaviour
     public GameObject door;
     public GameObject key;
 
+    public Animator animator;
+    public Collider doorCollider;
+
     private Vector3 radius;
     private bool inRadius;
 
@@ -23,6 +26,13 @@ public class UnlockDoor : MonoBehaviour
         {
             inRadius = true;
         }
+
+        if(inRadius)
+        {
+            animator.enabled = true;
+            doorCollider.enabled = false;
+        }
+
     }
 
     public bool GetInRadius()

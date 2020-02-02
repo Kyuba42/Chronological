@@ -6,8 +6,6 @@ public class PickUp : MonoBehaviour
 {
     [Header("Material")]
     public Material outlineMaterialRef;
-    [Header("Animations")]
-    public Animator playerAnimatior = null;
 
     private GameObject pickedUpObject;
     public GameObject AudioListener;
@@ -46,7 +44,6 @@ public class PickUp : MonoBehaviour
                 // Turn off outline if looking at another PickUp object
                 if (pickedUpObject != null && rayHit.collider.gameObject != pickedUpObject)
                 {
-                    playerAnimatior.SetBool("grabbing", false);
                     pickedUpObject.GetComponent<MeshRenderer>().material = pickedUpObject.GetComponent<MeshRenderer>().materials[1];
                 }
 
