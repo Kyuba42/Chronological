@@ -115,11 +115,6 @@ public class FpsMovement : MonoBehaviour
                     playerAnimatior.SetBool("Walking", false);
                 }
         }
-        
-
-
-
-
         //- mouseLook -//
         if (!isPaused)
         {

@@ -10,8 +10,15 @@ public class Teleport : MonoBehaviour
     private Transform playerTrans;
     public AudioSource SFXSource;
 
+    public FpsMovement movement;
+
+    private bool isPaused;
+
     private bool isKeyDown = false;
     private bool isInPresent = true;
+
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,23 +30,27 @@ public class Teleport : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        
+        if(!movement.isPaused)
         {
-            player.GetComponent<CharacterController>().enabled = false;
-            if (isInPresent)
+            if (Input.GetMouseButtonDown(1))
             {
-                ghost2020.transform.position = playerTrans.position;
-                playerTrans.position = ghost1920.transform.position;
-                isInPresent = false;
+                player.GetComponent<CharacterController>().enabled = false;
+                if (isInPresent)
+                {
+                    ghost2020.transform.position = playerTrans.position;
+                    playerTrans.position = ghost1920.transform.position;
+                    isInPresent = false;
+                }
+                else
+                {
+                    ghost1920.transform.position = playerTrans.position;
+                    playerTrans.position = ghost2020.transform.position;
+                    isInPresent = true;
+                }
+                player.GetComponent<CharacterController>().enabled = true;
+                SFXSource.Play();
             }
-            else
-            {
-                ghost1920.transform.position = playerTrans.position;
-                playerTrans.position = ghost2020.transform.position;
-                isInPresent = true;
-            }
-            player.GetComponent<CharacterController>().enabled = true;
-            SFXSource.Play();
         }
     }
 }
