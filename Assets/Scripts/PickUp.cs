@@ -21,32 +21,6 @@ public class PickUp : MonoBehaviour
         RaycastHit rayHit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 10.0f))
         {
-            //if (rayHit.collider.gameObject.tag == "PickUp")
-            //{
-            //    pickedUpObject = rayHit.collider.gameObject;
-            //    pickedUpObject.GetComponent<MeshRenderer>().material = outlineMaterialRef;
-
-            //    if (Input.GetMouseButtonDown(0))
-            //    {
-            //        if (!clicked)
-            //        {
-            //            rayHit.collider.gameObject.transform.parent = transform;
-            //            pickedUpObject.GetComponent<Rigidbody>().useGravity = false;
-            //            pickedUpObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
-            //        }
-            //        else
-            //        {
-            //            pickedUpObject.transform.parent = null;
-            //            pickedUpObject.GetComponent<MeshRenderer>().material = pickedUpObject.GetComponent<MeshRenderer>().materials[1];
-            //            pickedUpObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            //            pickedUpObject.GetComponent<Rigidbody>().useGravity = true;
-            //            pickedUpObject = null;
-            //        }
-
-            //    }
-            //}
-            ///
-
             if (holdItem == false && pickedUpObject != null)
             {
                 pickedUpObject.transform.parent = null;
