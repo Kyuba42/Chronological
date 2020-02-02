@@ -17,14 +17,14 @@ public class FpsMovement : MonoBehaviour
 
     [Header("MovementSpeeds")]
     [Range(5.0f, 25.0f)]
-    public float movingSpeed = 5.0f;
+    public float movingSpeed = 17.5f;
     [Range(50.0f, 500.0f)]
-    public float jumpForceInital = 50.0f;
+    public float jumpForceInital = 400.0f;
     public float jumpForceCurrent = 0.0f;
     [Range(50.0f, 500.0f)]
-    public float gravity = 5.0f;
+    public float gravity = 350f;
     [Range(0.5f,10.0f)]
-    public float gravityMultiply = 1.25f;
+    public float gravityMultiply = 1.75f;
 
     [Header("CameraMovement")]
     [Range(1.0f, 10.0f)]
@@ -41,19 +41,12 @@ public class FpsMovement : MonoBehaviour
     //look verables
     private Vector2 LookRotation = new Vector2(0, 0);
 
-    //Jump verables
-    private bool isGrounded = true;
-    private float maxJump;
-    private bool jumpMaxHit = false;
-    private bool canMove = true;
-
-
     //-------------End Of private Verables--------//
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-    }
+    }           
 
     // Update is called once per frame
     void Update()
@@ -65,19 +58,16 @@ public class FpsMovement : MonoBehaviour
         movementForce = transform.TransformDirection(movementForce);
         movementForce *= movingSpeed;
 
-        //- jumping -//
-        if (CharacterModel.transform.position.y < 4.5f)
-            isGrounded = true;
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        ////- jumping -//
+        ///
+        if (Input.GetKeyDown(KeyCode.Space) && characterController.isGrounded)
         {
-            isGrounded = false;
             jumpForceCurrent = 0;
             gravityMultiply = 1.0f;
             jumpForceCurrent += jumpForceInital;
         }
         else
         {
-            isGrounded = false;
             gravityMultiply += Time.deltaTime;
             jumpForceCurrent -= (gravity * gravityMultiply) * Time.deltaTime;
             movementForce.y += jumpForceCurrent * Time.deltaTime;
@@ -93,5 +83,6 @@ public class FpsMovement : MonoBehaviour
         CharacterModelCamera.transform.localEulerAngles = new Vector2(LookRotation.x, 0);
 
         characterController.Move(movementForce * Time.deltaTime);
+        
     }
 }

@@ -30,11 +30,9 @@ public class Teleport : MonoBehaviour
                 ghost2020.transform.position = playerTrans.position;
                 playerTrans.position = ghost1920.transform.position;
                 isInPresent = false;
-                Debug.Log("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
             }
             else
             {
-                Debug.Log("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
                 ghost1920.transform.position = playerTrans.position;
                 playerTrans.position = ghost2020.transform.position;
                 isInPresent = true;
