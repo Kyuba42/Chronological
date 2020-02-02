@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.23236844, g: 0.23554417, b: 0.27230176, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4886,7 +4886,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17040
+  m_Name: pb_Mesh19580
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5437,6 +5437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMaterialRef: {fileID: 2100000, guid: 8da135d7ee2b32242abed6533cbc8187, type: 2}
+  playerAnimatior: {fileID: 1231558272}
 --- !u!81 &144518851
 AudioListener:
   m_ObjectHideFlags: 0
@@ -5470,7 +5471,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 101.1
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -6143,6 +6144,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1258541128}
     m_Modifications:
+    - target: {fileID: 9159537069380098256, guid: a7dbdd508737b0d49b444c4263d812f1,
+        type: 3}
+      propertyPath: m_Name
+      value: Radio
+      objectReference: {fileID: 0}
     - target: {fileID: 9159537069380060400, guid: a7dbdd508737b0d49b444c4263d812f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6212,11 +6218,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9159537069380098256, guid: a7dbdd508737b0d49b444c4263d812f1,
-        type: 3}
-      propertyPath: m_Name
-      value: Radio
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7dbdd508737b0d49b444c4263d812f1, type: 3}
@@ -13814,6 +13815,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1964352369}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1231558272 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: aba9ce8f58cf8434e8da493eec29e875,
+    type: 3}
+  m_PrefabInstance: {fileID: 1561831518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1258541127
 GameObject:
   m_ObjectHideFlags: 0
@@ -13914,7 +13921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 9d075d70719a8b543a2a27648e720f29, type: 2}
+  sharedProfile: {fileID: 0}
   isGlobal: 0
   blendDistance: 0
   weight: 1
@@ -14377,7 +14384,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16788
+  m_Name: pb_Mesh19298
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17577,6 +17584,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: aba9ce8f58cf8434e8da493eec29e875,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ddb929597b2d8ef4aab467c9ce87f5b1, type: 2}
+    - target: {fileID: -6057140222963153312, guid: aba9ce8f58cf8434e8da493eec29e875,
+        type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -8671977129038613269, guid: aba9ce8f58cf8434e8da493eec29e875,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -17732,11 +17749,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: aba9ce8f58cf8434e8da493eec29e875,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: ddb929597b2d8ef4aab467c9ce87f5b1, type: 2}
     - target: {fileID: -5749600678285002769, guid: aba9ce8f58cf8434e8da493eec29e875,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -30781,7 +30793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 1e37c9af42b5fc44784ff65a7196df92, type: 2}
+  sharedProfile: {fileID: 0}
   isGlobal: 0
   blendDistance: 0
   weight: 1
@@ -30864,6 +30876,7 @@ MonoBehaviour:
   lookSpeed: 4.03
   MinHeadTurnX: -90
   MaxHeadTurnX: 90
+  playerAnimatior: {fileID: 1231558272}
 --- !u!143 &2088520007
 CharacterController:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class FpsMovement : MonoBehaviour
     public float jumpForceCurrent = 0.0f;
     [Range(50.0f, 500.0f)]
     public float gravity = 350f;
-    [Range(0.5f,10.0f)]
+    [Range(0.5f, 10.0f)]
     public float gravityMultiply = 1.75f;
 
     [Header("CameraMovement")]
@@ -33,6 +33,9 @@ public class FpsMovement : MonoBehaviour
     public float MinHeadTurnX = 1.0f;
     [Range(-360.0f, 360.0f)]
     public float MaxHeadTurnX = 1.0f;
+
+    [Header("Animations")]
+    public Animator playerAnimatior = null;
 
     //------------End of public verables----------//
 
@@ -72,6 +75,46 @@ public class FpsMovement : MonoBehaviour
             jumpForceCurrent -= (gravity * gravityMultiply) * Time.deltaTime;
             movementForce.y += jumpForceCurrent * Time.deltaTime;
         }
+
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            playerAnimatior.SetBool("grabbing", true);
+            playerAnimatior.SetBool("Idle", false);
+            playerAnimatior.SetBool("Walking", false);
+            playerAnimatior.SetBool("Jumping", false);
+        }
+        else if (!characterController.isGrounded)
+        {
+            if (playerAnimatior.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+            {
+                playerAnimatior.SetBool("grabbing", false);
+                playerAnimatior.SetBool("Idle", false);
+                playerAnimatior.SetBool("Jumping", true);
+                playerAnimatior.SetBool("Walking", false);
+            }
+        }
+        else if (movementForce.x != 0.0f && movementForce.z != 0.0f)
+        {
+            if (playerAnimatior.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+            {
+                playerAnimatior.SetBool("grabbing", false);
+                playerAnimatior.SetBool("Idle", false);
+                playerAnimatior.SetBool("Jumping", false);
+                playerAnimatior.SetBool("Walking", true);
+            }
+        }
+        else
+        {
+                if (playerAnimatior.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+                {
+                    playerAnimatior.SetBool("grabbing", false);
+                    playerAnimatior.SetBool("Idle", true);
+                    playerAnimatior.SetBool("Jumping", false);
+                    playerAnimatior.SetBool("Walking", false);
+                }
+        }
+        
 
         //- mouseLook -//
         LookRotation.y += Input.GetAxis("Mouse X") * lookSpeed;
