@@ -6245,7 +6245,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &406072447
 PrefabInstance:
@@ -17409,7 +17409,7 @@ PrefabInstance:
     - target: {fileID: 4711751943436914483, guid: 0c24ac66732714f4d9ccaedd189c2518,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4711751943436914483, guid: 0c24ac66732714f4d9ccaedd189c2518,
         type: 3}
@@ -23667,8 +23667,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 0
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 10
+  MinDistance: 0.7291088
+  MaxDistance: 21.862396
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 1
@@ -23702,8 +23702,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.34202957
-      value: 0.9154186
+      time: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -23931,7 +23931,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1719675592 stripped
 Transform:
@@ -29994,7 +29994,7 @@ RectTransform:
   m_Children:
   - {fileID: 1223825813}
   - {fileID: 1920926766}
-  m_Father: {fileID: 1560817216}
+  m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -30128,7 +30128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4598119376000420, guid: 49f1b2a095d7cc74e8dd6f00fefa1e9c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.89
+      value: -10.02
       objectReference: {fileID: 0}
     - target: {fileID: 4598119376000420, guid: 49f1b2a095d7cc74e8dd6f00fefa1e9c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -30794,7 +30794,7 @@ Transform:
   m_LocalScale: {x: 63.164135, y: 18.139, z: 58.616512}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2060497295 stripped
 Transform:
@@ -30939,7 +30939,7 @@ Transform:
   - {fileID: 144518853}
   - {fileID: 63964354}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2088520012
 MonoBehaviour:
