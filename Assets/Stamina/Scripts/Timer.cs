@@ -10,6 +10,8 @@ public class Timer : MonoBehaviour
     float currentTime = 0f;
     float startTime = 20f;
     [SerializeField] Text countdownText;
+
+    public AudioSource TimesUp;
     //if using timer
 
     // Start is called before the first frame update
@@ -37,6 +39,7 @@ public class Timer : MonoBehaviour
         if (currentTime <= 0)
         {
             currentTime = 0;
+            TimesUp.Play();
         }
     }
 }
