@@ -7,6 +7,7 @@ public class SlotIn : MonoBehaviour
 {
     public GameObject objectReference;
     public UnlockDoor animationScript;
+    public GameObject parentObject;
 
 
     // Start is called before the first frame update
@@ -32,9 +33,13 @@ public class SlotIn : MonoBehaviour
 
             if (animationScript != null)
             {
-                //other.transform.parent = animationScript.transform;
-                other.transform.parent = animationScript.transform.GetChild(1);
                 animationScript.triggered = true;
+                if (parentObject != null)
+                    other.transform.parent = parentObject.transform;
+                else
+                {
+                    other.transform.parent = null;
+                }
             }
             else
             {
