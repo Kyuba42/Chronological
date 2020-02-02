@@ -5,12 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class WinScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    private float timer = 5.0f;
+    private bool timeStart = false;
+    public GameObject UI;
+
+
     private void OnTriggerEnter(Collider other)
     {
-        //Check for a match with the specified name on any GameObject that collides with your GameObject
         if (other.gameObject.name == "Character")
         {
+            timeStart = true;
+        }
+    }
+
+    private void Update()
+    {
+        if (timeStart)
+        {
+            timer -= Time.deltaTime;
+            Debug.Log("Timer: " + timer);
+            UI.GetComponent<WonUI>().OpenEndUI();
+        }
+
+        if (timer < 0)
+        {
+            UI.GetComponent<WonUI>().CloseEndUI();
             SceneManager.LoadScene(sceneBuildIndex: 0);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;

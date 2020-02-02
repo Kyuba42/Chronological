@@ -48,5 +48,7 @@ public class SlotIn : MonoBehaviour
                 other.transform.parent = null;
             }
         }
+
+        
     }
 }

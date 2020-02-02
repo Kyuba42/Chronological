@@ -10,9 +10,8 @@ public class PickUp : MonoBehaviour
     private GameObject pickedUpObject;
     public GameObject AudioListener;
     private Material[] objectMaterials;
+
     private bool holdItem;
-
-
 
 
     // Start is called before the first frame update
